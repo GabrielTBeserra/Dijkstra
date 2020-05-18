@@ -1,0 +1,13 @@
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.AssemblyInfoInputs.cache
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.AssemblyInfo.cs
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.exe
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.deps.json
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.runtimeconfig.json
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.runtimeconfig.dev.json
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.dll
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\bin\Debug\netcoreapp3.1\DIJKSTRA.pdb
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.dll
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.pdb
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.genruntimeconfig.cache
+C:\Users\gabri\source\repos\DIJKSTRA\DIJKSTRA\obj\Debug\netcoreapp3.1\DIJKSTRA.csprojAssemblyReference.cache
