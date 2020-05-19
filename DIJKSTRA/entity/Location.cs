@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DIJKSTRA.entity
-{
-    class Location
-    {
-        public Location(string nome, string pais, string cidade)
-        {
+namespace DIJKSTRA.entity {
+    class Location {
+        public Location (string nome, string cidade, string pais) {
             Nome = nome;
             Pais = pais;
             Cidade = cidade;

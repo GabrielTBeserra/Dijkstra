@@ -22,19 +22,25 @@ namespace DIJKSTRA.entity
 
         public void MenuPrincipal()
         {
-            Console.WriteLine("        Feiras de Games        ");
-            Console.WriteLine("############# Menu #############");
-            Console.WriteLine("#1 -  Exibir nome dos pontos   #");
-            Console.WriteLine("#2 -  Exibir matriz            #");
-            Console.WriteLine("#3 -  Imprimir iteracao        #");
-            Console.WriteLine("#4 -  Imprimir Menor distancia #");
-            Console.WriteLine("#5 -  Ajuda                    #");
-            Console.WriteLine("#9 -  Sai                      #");
-            Console.WriteLine("################################");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("################## Menu ################");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("#--------------Feiras de Games---------#");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("################## Menu ################");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("#1 -  Exibir nome dos pontos           #");
+            Console.WriteLine("#2 -  Exibir matriz                    #");
+            Console.WriteLine("#3 -  Imprimir iteracao                #");
+            Console.WriteLine("#4 -  Imprimir Menor distancia         #");
+            Console.WriteLine("#5 -  Imprimir Distancia ate os pontos #");
+            Console.WriteLine("#6 -  Ajuda                            #");
+            Console.WriteLine("#9 -  Sai                              #");
+            Console.WriteLine("########################################");
 
             int Opcao = 0;
 
-            // Faz uma verificacao para ver se o usuario nao inseriu uma string, em caso disso acontecer, ele volta para o Menu Principal
+            // Verifica se o usuario nao inseriu uma string, em caso disso acontecer, ele volta para o Menu Principal
             try
             {
                 Opcao = int.Parse(Console.ReadLine());
@@ -59,6 +65,9 @@ namespace DIJKSTRA.entity
                     ImprimiMenorCaminho();
                     break;
                 case 5:
+                    ImprimirDistanciaAteCadaPonto();
+                    break;
+                case 6:
                     Ajuda();
                     break;
                 case 9:
@@ -69,7 +78,6 @@ namespace DIJKSTRA.entity
                     break;
             }
 
-
             MenuPrincipal();
         }
 
@@ -78,7 +86,7 @@ namespace DIJKSTRA.entity
             // Imprime todas localidades das feiras, informando o Nome da feira, o pais do envento e qual cidade ele acontece
             locations.ForEach((item) =>
             {
-                Console.WriteLine($"Evento: {item.Nome}, Pais {item.Pais}, Cidade {item.Cidade}");
+                Console.WriteLine($"Evento: {item.Nome} | Cidade: {item.Pais} | Pais: {item.Cidade}");
             });
         }
 
@@ -119,11 +127,61 @@ namespace DIJKSTRA.entity
             }
 
             Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
+
         }
 
         public void ImprimiMenorCaminho()
         {
+            Console.WriteLine("Informe o ponto de saida: ");
 
+            int PontoDeSaida = 0;
+
+            try
+            {
+                PontoDeSaida = int.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocorreu um erro ,tente novamente");
+                MenuPrincipal();
+            }
+
+            if (PontoDeSaida > locations.Count || PontoDeSaida < 0)
+            {
+                Console.WriteLine("Ponto incorreto, tente novamente!");
+                Iteracao();
+                return;
+            }
+
+            Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
+            dijkstra.ImprimirMenorCaminho();
+        }
+
+        public void ImprimirDistanciaAteCadaPonto()
+        {
+            Console.WriteLine("Informe o ponto de saida: ");
+
+            int PontoDeSaida = 0;
+
+            try
+            {
+                PontoDeSaida = int.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocorreu um erro ,tente novamente");
+                MenuPrincipal();
+            }
+
+            if (PontoDeSaida > locations.Count || PontoDeSaida < 0)
+            {
+                Console.WriteLine("Ponto incorreto, tente novamente!");
+                Iteracao();
+                return;
+            }
+
+            Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
+            dijkstra.ImprimirResultados();
         }
 
         public void ImprimeMatriz()
