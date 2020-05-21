@@ -22,25 +22,25 @@ namespace DIJKSTRA.entity
 
         public void MenuPrincipal()
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("################## Menu ################");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("#--------------Feiras de Games---------#");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("################## Menu ################");
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("#1 -  Exibir nome dos pontos           #");
-            Console.WriteLine("#2 -  Exibir matriz                    #");
-            Console.WriteLine("#3 -  Imprimir iteracao                #");
-            Console.WriteLine("#4 -  Imprimir Menor distancia         #");
-            Console.WriteLine("#5 -  Imprimir Distancia ate os pontos #");
-            Console.WriteLine("#6 -  Ajuda                            #");
-            Console.WriteLine("#9 -  Sai                              #");
-            Console.WriteLine("########################################");
+            Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("|       Feiras de Games Onlines           |");
+            Console.WriteLine("|                 Menu                    |");
+            Console.WriteLine("|                                         |");
+            Console.WriteLine("| 1 ->  Exibir nome dos pontos            |");
+            Console.WriteLine("| 2 ->  Exibir matriz                     |");
+            Console.WriteLine("| 3 ->  Imprimir iteracao                 |");
+            Console.WriteLine("| 4 ->  Imprimir Menor distancia          |");
+            Console.WriteLine("| 5 ->  Imprimir Distancia ate os pontos  |");
+            Console.WriteLine("| 6 ->  Ajuda                             |");
+            Console.WriteLine("| 9 ->  Sair                              |");
+            Console.WriteLine("|                                         |");
+            Console.WriteLine("|_________________________________________|");
 
             int Opcao = 0;
 
-            // Verifica se o usuario nao inseriu uma string, em caso disso acontecer, ele volta para o Menu Principal
+            // Verifica se a entrada de dados e um numero, caso nao retorna para o menu
             try
             {
                 Opcao = int.Parse(Console.ReadLine());
@@ -74,7 +74,10 @@ namespace DIJKSTRA.entity
                     Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("teste");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("A opcao escolhida nao existe");
+                    Console.WriteLine("\nAperte qualquer tecla para continuar");
+                    Console.ReadKey();
                     break;
             }
 
@@ -83,28 +86,45 @@ namespace DIJKSTRA.entity
 
         public void ExibirPontos()
         {
+            Console.Clear();
             // Imprime todas localidades das feiras, informando o Nome da feira, o pais do envento e qual cidade ele acontece
+            Console.WriteLine("Lista das feiras cadastradas\n\n");
+
             locations.ForEach((item) =>
             {
                 Console.WriteLine($"Evento: {item.Nome} | Cidade: {item.Pais} | Pais: {item.Cidade}");
             });
+
+
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
 
         public void Ajuda()
         {
-            Console.WriteLine("############## Ajuda ##############");
-            Console.WriteLine("O menu de 'Exibir nome dos pontos' exibe na tela, todos as Feiras de suas localizacoes");
-            Console.WriteLine("O menu de 'Exibir matriz' exibe a distancia entre todos os pontos");
-            Console.WriteLine("O menu de 'Imprimir iteracao'");
-            Console.WriteLine("");
-            Console.WriteLine("Todas as distancias entre as Feiras, sao medidas em kilometros");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("###################################");
+            Console.Clear();
+            Console.WriteLine("|--------------------- Ajuda ---------------------");
+            Console.WriteLine("| O menu de 'Exibir nome dos pontos' exibe na tela, todos as Feiras de suas localizacoes");
+            Console.WriteLine("| O menu de 'Exibir matriz' exibe a distancia entre todos os pontos");
+            Console.WriteLine("| O menu de 'Imprimir iteracao' imprime o caminho saindo do ponto inicial ate os nos");
+            Console.WriteLine("| O menu de 'Imprimir distancia ate os pontos' vai exibir qual a distancia final, a partir do ponto de origem ate aquele determinado ponto");
+            Console.WriteLine("| Todas as distancias entre as Feiras, sao medidas em kilometros");
+            Console.WriteLine("| Em caso de ocorrer algum erro, o programa ira voltar para o menu, para que se possa repetir o processo");
+            Console.WriteLine("| A funcao de imprimir menor distancia, tem como funcao exibir o caminho que gera o menor custo, saindo e um ponto e passando por todos");
+            Console.WriteLine("|");
+            Console.WriteLine("|");
+            Console.WriteLine("|");
+            Console.WriteLine("|");
+            Console.WriteLine("|");
+            Console.WriteLine("_________________________________________________");
+
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
 
         public void Iteracao()
         {
+            Console.Clear();
             Console.WriteLine("Informe o ponto de saida: ");
 
             int PontoDeSaida = 0;
@@ -127,11 +147,14 @@ namespace DIJKSTRA.entity
             }
 
             Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
-
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
 
         public void ImprimiMenorCaminho()
         {
+
+            Console.Clear();
             Console.WriteLine("Informe o ponto de saida: ");
 
             int PontoDeSaida = 0;
@@ -155,10 +178,14 @@ namespace DIJKSTRA.entity
 
             Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
             dijkstra.ImprimirMenorCaminho();
+
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
 
         public void ImprimirDistanciaAteCadaPonto()
         {
+            Console.Clear();
             Console.WriteLine("Informe o ponto de saida: ");
 
             int PontoDeSaida = 0;
@@ -182,30 +209,33 @@ namespace DIJKSTRA.entity
 
             Dijkstra dijkstra = new Dijkstra(distancias, locations, PontoDeSaida);
             dijkstra.ImprimirResultados();
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
 
         public void ImprimeMatriz()
         {
-            Console.WriteLine("Distancia entre todas as feiras, em KM");
+            // Imprime a matriz de distancia
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("############ Matriz de distancias ############");
+            Console.ForegroundColor = ConsoleColor.White;
 
             int _quantidadeDePontos = (int)Math.Sqrt(distancias.Length);
 
-            for (int i = 0; i < _quantidadeDePontos; i++)
-            {
-                Console.Write($"{locations[i].Nome}\t");
-            }
-
-            Console.WriteLine("");
 
             for (int i = 0; i < _quantidadeDePontos; i++)
             {
-                Console.Write($"{locations[i].Nome}\t");
                 for (int y = 0; y < _quantidadeDePontos; y++)
                 {
-                    Console.Write($"\t{distancias[i, y]}Km\t");
+                    Console.Write($"{distancias[i, y]}Km\t");
                 }
                 Console.WriteLine("");
             }
+
+
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
         }
     }
 }

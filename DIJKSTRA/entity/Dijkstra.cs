@@ -12,9 +12,12 @@ namespace DIJKSTRA.entity
         private int QuantidadeDeElementos;
         private List<int> ListaMenorCaminho;
         private List<Noh> ListaDeNos;
+        private int origem;
+
 
         public Dijkstra(double[,] matrizDeDistancia, List<Location> listaDeNomes, int origem)
         {
+            this.origem = origem;
             // Obtem o numero de elementos a partir da raiz quadrada do tamanho da matriz que seria tamanho X tamanho
             this.QuantidadeDeElementos = (int)Math.Sqrt(matrizDeDistancia.Length);
             // Salva uma copia local da lista dos lugares
@@ -38,7 +41,7 @@ namespace DIJKSTRA.entity
             CarregarDijkstra();
         }
 
-        // Metodo resposnavel por calcular qual o menor no, que ainda nao foi visitado
+        // Metodo responsavel por calcular qual o menor no, que ainda nao foi visitado
         private int CalcularDistanciaMinima()
         {
             double valorMinimo = INF;
@@ -53,8 +56,6 @@ namespace DIJKSTRA.entity
                     valorMinimo = ListaDeNos[i].Distancia;
                     index = i;
                 }
-
-                //                Console.WriteLine (ListaNomesLugares[i].Nome);
             }
 
             // Retorna qual a posicao do noh com menor caminho, que ainda nao foi visitado
@@ -68,7 +69,6 @@ namespace DIJKSTRA.entity
                 // Salva qual a posicao do no que possui o menor caminho, e que ainda nao foi visitado
                 int NohDeDistanciaMinima = CalcularDistanciaMinima();
 
-                //Console.WriteLine ($"{NohDeDistanciaMinima}\n\n");
                 // Defini que aquele no retornado, foi visitado
                 ListaDeNos[NohDeDistanciaMinima].Visitado = true;
                 // Adiciona o no, na lista de menor caminho
@@ -82,7 +82,6 @@ namespace DIJKSTRA.entity
                         // Em caso da matriz ser menor, a nova distancia daquele no passa a ser a distancia antiga, mais a distancia na matriz daquela determinado posicao
                         ListaDeNos[y].Distancia = ListaDeNos[NohDeDistanciaMinima].Distancia + MatrizDistancias[NohDeDistanciaMinima, y];
 
-                        Console.WriteLine(ListaNomesLugares[y].Nome);
                     }
                 }
             }
@@ -90,10 +89,11 @@ namespace DIJKSTRA.entity
 
         public void ImprimirResultados()
         {
-            Console.WriteLine("No\t\tDistancia");
+
+            Console.WriteLine("No \t\t\t Distancia \t\tDe\t\tPara");
             for (int i = 0; i < QuantidadeDeElementos; i++)
             {
-                Console.WriteLine(i + " \t\t " + ListaDeNos[i].Distancia);
+                Console.WriteLine($"{i} \t\t {ListaDeNos[i].Distancia} Km \t {ListaNomesLugares[origem].Nome} --> {ListaNomesLugares[i].Nome}");
             }
         }
 
